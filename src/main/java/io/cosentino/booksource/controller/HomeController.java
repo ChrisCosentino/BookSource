@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.ws.rs.Path;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.*;
@@ -250,6 +251,30 @@ public class HomeController {
         this.cart.clear();
         return "redirect:cart";
     }
+
+    @GetMapping("/remove/{id}")
+    public String remove(@PathVariable String id){
+        Product toRemove = null;
+        for(Product i : this.cart){
+//            System.out.println(i.getProductId());
+//            if(i.getProductId().equals()){
+//                this.cart.remove(i);
+//            }
+
+            if(i.getProductId().equals(id)){
+                toRemove = i;
+            }
+        }
+
+        this.cart.remove(toRemove);
+        return "redirect:/removed";
+    }
+
+    @GetMapping("/removed")
+    public String removed(){
+        return "redirect:/cart";
+    }
+
 
     @GetMapping("/contact")
     public String contact(Model model){
