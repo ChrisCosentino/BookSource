@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:spanth="http://www.w3.org/1999/html">
 <head>
     <title>Book Source: Cart</title>
     <meta charset="utf-8">
@@ -23,7 +23,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="header_content d-flex flex-row align-items-center justify-content-start">
-                            <div class="logo"><a href="#">Book Source.</a></div>
+                            <div class="logo"><a th:href="@{/}">Book Source.</a></div>
                             <nav class="main_nav">
                                 <ul>
                                     <li><a th:href="@{/home}">Home</a></li>
@@ -160,29 +160,17 @@
                     <div class="cart_item d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start" th:each="item : ${cart}">
                         <!-- Name -->
                         <div class="cart_item_product d-flex flex-row align-items-center justify-content-start">
-<!--                            <div class="cart_item_image">-->
-<!--                                <img th:src="${item.photoUrl}" alt="">-->
-<!--                            </div>-->
                             <div class="cart_item_name_container">
-                                <div class="cart_item_name"><a href="" th:text="${item.title}"></a></div>
+                                <div class="cart_item_name"><a th:href="@{'/product/' + ${item.productId}}" th:text="${item.title}"></a></div>
                             </div>
                         </div>
                         <!-- Price -->
-                        <span style="color: black">$</span><div class="cart_item_price" th:text="${item.price}"></div>
-                        <!-- Quantity -->
-<!--                        <div class="cart_item_quantity">-->
-<!--                            <div class="product_quantity_container">-->
-<!--                                <div class="product_quantity clearfix">-->
-<!--                                    <span>Qty</span>-->
-<!--                                    <input id="quantity_input" type="text" pattern="[0-9]*" value="1">-->
-<!--                                    <div class="quantity_buttons">-->
-<!--                                        <div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>-->
-<!--                                        <div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fa fa-chevron-down" aria-hidden="true"></i></div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-                        <!-- Total -->
+                        <div>
+
+
+                            <div class="cart_item_price">$<span th:text="${item.price}"></span></div>
+                        </div>
+
 
                     </div>
                     <!--Cart item end-->
