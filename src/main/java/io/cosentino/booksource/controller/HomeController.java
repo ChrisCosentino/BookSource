@@ -120,9 +120,10 @@ public class HomeController {
 
 
     @GetMapping("/add-to-cart")
-    public String addCart(@RequestParam String author, @RequestParam String category, @RequestParam String title, @RequestParam String description, @RequestParam String price, @RequestParam boolean available, @RequestParam String productId, @RequestParam String photoUrl) throws MalformedURLException, UnsupportedEncodingException, URISyntaxException {
-
-        Product p = new Product(author, category, title, description, Double.parseDouble(price), available, productId, photoUrl);
+    public String addCart(@RequestParam String author, @RequestParam String category, @RequestParam String title, @RequestParam String description, @RequestParam String price, @RequestParam boolean available, @RequestParam String productId, @RequestParam String photoUrl, @RequestParam String token) throws MalformedURLException, UnsupportedEncodingException, URISyntaxException {
+        String s = photoUrl + "&token=" + token;
+        s = s.replace("books/", "books%2F");
+        Product p = new Product(author, category, title, description, Double.parseDouble(price), available, productId, s);
 
         cart.add(p);
 
@@ -226,7 +227,6 @@ public class HomeController {
 
     @GetMapping("/failed")
     public String failed(Model model){
-
         return "failed";
     }
 
