@@ -153,7 +153,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Cart Item -->
             <div class="cart_item d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start" style="overflow: hidden" th:each="item : ${cart}">
                 <!-- Name -->
@@ -163,7 +163,7 @@
                     </div>
                     <div class="cart_item_name_container">
                         <div class="cart_item_name"><a th:text="${item.title}" th:href="@{'/product/' + ${item.productId}}"></a></div>
-                        <div class="cart_item_edit"><a th:text="${item.price}"></a></div>
+                        <div class="cart_item_edit">$<a th:text="${item.price}"></a></div>
                     </div>
                 </div>
 
