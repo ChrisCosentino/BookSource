@@ -39,6 +39,10 @@ public class HomeController {
     private int purchaseRequests = 0;
 
 
+    @GetMapping("/")
+    public String goHome(){
+        return "redirect:home";
+    }
 
     @GetMapping("/home")
     public String home(Model model) throws IOException, InterruptedException {
